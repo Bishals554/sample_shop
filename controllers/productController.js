@@ -101,9 +101,9 @@ module.exports.updateProduct = async (req, res) => {
       // });
 
       cloudinary.config({
-        cloud_name: 'dx5eyrlaf',
-        api_key: '316226597746222',
-        api_secret: 'YbnHayJ00pMZjzCnVFrois70iKc'
+        cloud_name: 'da9kv9hpv',
+        api_key: '7463928317291972',
+        api_secret: '_2g7Umpjq9tcYcXN1KL8UnOEaMw'
       })
 
       await cloudinary.uploader.destroy(oldImageId);
@@ -144,9 +144,9 @@ module.exports.removeProduct = async (req, res) => {
   try {
     await Product.findByIdAndDelete(id);
     cloudinary.config({
-      cloud_name: 'dx5eyrlaf',
-      api_key: '316226597746222',
-      api_secret: 'YbnHayJ00pMZjzCnVFrois70iKc'
+      cloud_name: 'da9kv9hpv',
+      api_key: '7463928317291972',
+      api_secret: '_2g7Umpjq9tcYcXN1KL8UnOEaMw'
     })
 
     await cloudinary.uploader.destroy(public_id);
