@@ -14,6 +14,7 @@ module.exports.userSignUp = async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({
+        status: 400,
         message: 'User already exists'
       });
     } else {
@@ -36,7 +37,8 @@ module.exports.userSignUp = async (req, res) => {
 
   } catch (err) {
     return res.status(400).json({
-      message: err.message
+      status: 400,
+      message: 'Check your Credentials'
     });
 
   }
@@ -55,6 +57,7 @@ module.exports.userLogin = async (req, res) => {
       const isValidPassword = await bcrypt.compareSync(password, existingUser.password);
       if (!isValidPassword) {
         return res.status(422).json({
+          status: 401,
           message: 'Invalid Credentials'
         });
       } else {
@@ -75,11 +78,16 @@ module.exports.userLogin = async (req, res) => {
 
     } else {
       return res.status(401).json(
-        { status: 'Check your Credentials' });
+        { 
+        status: 401,
+        message: 'Check your Credentials'
+      }
+      );
     }
   } catch (err) {
     res.status(400).json({
-      message: err.message
+      status: 400,
+      message: 'Something went wrong'
     });
   }
 
